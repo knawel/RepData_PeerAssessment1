@@ -99,29 +99,23 @@ And devide dataset into two:
 
 ```{r}
 wd <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
-
 FitbitData_woNA$day <- weekdays(FitbitData_woNA$date)
-head(FitbitData_woNA$day )
-
 FitbitData_weekday<-FitbitData_woNA[FitbitData_woNA$day %in% wd, ]
 FitbitData_weekend<-FitbitData_woNA[!(FitbitData_woNA$day %in% wd), ]
-
 b_we <- aggregate(FitbitData_weekend$steps, by=list(Category=FitbitData_weekend$interval), FUN=mean)
-b_wd <- aggregate(FitbitData_weekend$steps, by=list(Category=FitbitData_weekend$interval), FUN=mean)
-
-
+b_wd <- aggregate(FitbitData_weekday$steps, by=list(Category=FitbitData_weekday$interval), FUN=mean)
 ```
 
-And plet the results:
+And plot the results:
 ```{r}
 par(mfrow = c(2, 1))
-
-b <- aggregate(FitbitData$steps, by=list(Category=FitbitData$interval), FUN=mean, na.rm=TRUE)
-plot(b, type="l", col="cadetblue4", lwd=2.5, 
-     main="Average activity pattern", 
+plot(b_wd, type="l", col="chocolate3", lwd=2.5, 
+     main="Average activity pattern on weekdays", 
      xlab="Interval", ylab="Average number of steps")
 
-
+plot(b_we, type="l", col="chartreuse4", lwd=2.5, 
+     main="Average activity pattern on weekend", 
+     xlab="Interval", ylab="Average number of steps")
 ```
 
 
