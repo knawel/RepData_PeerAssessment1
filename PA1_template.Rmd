@@ -27,13 +27,14 @@ a <- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)
 ```
 So, mean and median value are:
 ```{r}
-print(paste0("Mean: ", as.character(sum(a$x, na.rm = T))))
+print(paste0("Mean: ", as.character(mean(a$x, na.rm = T))))
+print(paste0("Median: ", as.character(median(a$x, na.rm = T))))
 ```
+And plot histogram:
 
-An
-a <- as.data.frame(a)
-summary(a)
-hist(a$x)
+```{r}
+#summary(a)
+hist(a$x, main = "Total number of steps per day", xlab = "Steps per day", col = "cadetblue2")
 ```
 
 
