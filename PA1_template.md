@@ -74,6 +74,19 @@ plot(b, type="l", col="cadetblue4", lwd=2.5,
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
+The 5-minute interval that, on average, contains the maximum number of steps:
+
+
+```r
+m <- max(b$x)
+max_steps <- b$Category[b$x == m]
+print(paste0("Interval ", as.character(max_steps), " contains the maximum number of steps."))
+```
+
+```
+## [1] "Interval 835 contains the maximum number of steps."
+```
+
 ## Imputing missing values
 Let's fill NA values.
 
@@ -133,7 +146,7 @@ c <- aggregate(FitbitData_woNA$steps, by=list(Category=FitbitData_woNA$date), FU
 hist(c$x, main = "Total number of steps per day", xlab = "Steps per day", col = "cadetblue2")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 
 Mean and median values for this new dataset are:
 
@@ -209,7 +222,7 @@ xyplot(x~int | day, data = total_Data, type="l",
    layout=c(1,2))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 
 
 
 We can see difference in the daily activity patterns for weekdays and the weekend. 

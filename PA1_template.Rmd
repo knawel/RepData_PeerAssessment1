@@ -48,6 +48,14 @@ plot(b, type="l", col="cadetblue4", lwd=2.5,
      xlab="Interval", ylab="Average number of steps")
 ```
 
+The 5-minute interval that, on average, contains the maximum number of steps:
+
+```{r}
+m <- max(b$x)
+max_steps <- b$Category[b$x == m]
+print(paste0("Interval ", as.character(max_steps), " contains the maximum number of steps."))
+```
+
 ## Imputing missing values
 Let's fill NA values.
 
