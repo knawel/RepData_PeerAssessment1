@@ -8,20 +8,20 @@ output:
 
 ## Loading and preprocessing the data
 
-Let's simple read file, convert data into data format  and see result.
+Let's just read file, convert data into date format and see the result.
 
 ```{r}
+library(lattice)
 DateType  <- "%Y-%m-%d"
 FitbitData <- read.csv(unz("activity.zip", "activity.csv"), header = T)
 FitbitData$date <- as.Date(FitbitData$date, DateType)
-#FitbitData$date <- as.factor(FitbitData$date)
 summary(FitbitData)
 ```
 
 
 ## What is mean total number of steps taken per day?
 
-For this part I've calculated total numbers of steps for each day.
+For this part I've calculated total numbers steps for each day.
 ```{r}
 a <- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)
 ```
@@ -56,7 +56,7 @@ The total number of missing values in the dataset
 sum(is.na(FitbitData$steps))
 ```
 
-```NA``` are located only in ```steps``` column. I replace NA by averages steps per 5-min interval. And save this new dataset as ```FitbitData_woNA```.
+```NA``` are located only in ```steps``` column. I replaced NA by averages steps per 5-min interval. And save this new dataset as ```FitbitData_woNA```.
 
 
 ```{r}
@@ -90,12 +90,12 @@ Mean and median value didn't change. It can be due to ```na``` values present on
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-At the first set up locale
+Set up locale
 ```{r}
 Sys.setlocale("LC_TIME", "English")
 ```
 
-And devide dataset into two:
+And divide dataset into two:
 
 ```{r}
 wd <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
@@ -104,18 +104,34 @@ FitbitData_weekday<-FitbitData_woNA[FitbitData_woNA$day %in% wd, ]
 FitbitData_weekend<-FitbitData_woNA[!(FitbitData_woNA$day %in% wd), ]
 b_we <- aggregate(FitbitData_weekend$steps, by=list(Category=FitbitData_weekend$interval), FUN=mean)
 b_wd <- aggregate(FitbitData_weekday$steps, by=list(Category=FitbitData_weekday$interval), FUN=mean)
+
+total_Data <- data.frame( day = as.factor(c(rep("weekdays", length(b_wd$x)), rep("weekend", length(b_we$x)))),
+                          int = c(b_wd$Category, b_we$Category),
+                          x = c(b_wd$x, b_we$x))
+
 ```
 
 And plot the results:
+```{r, echo=FALSE}
+# par(mfrow = c(2, 1))
+# plot(b_wd, type="l", col="chocolate3", lwd=2.5, 
+#      main="Average activity pattern on weekdays", 
+#      xlab="Interval", ylab="Average number of steps")
+# 
+# plot(b_we, type="l", col="chartreuse4", lwd=2.5, 
+#      main="Average activity pattern on weekend", 
+#      xlab="Interval", ylab="Average number of steps")
+```
 ```{r}
-par(mfrow = c(2, 1))
-plot(b_wd, type="l", col="chocolate3", lwd=2.5, 
-     main="Average activity pattern on weekdays", 
-     xlab="Interval", ylab="Average number of steps")
 
-plot(b_we, type="l", col="chartreuse4", lwd=2.5, 
-     main="Average activity pattern on weekend", 
-     xlab="Interval", ylab="Average number of steps")
+xyplot(x~int | day, data = total_Data, type="l",
+   main="Average activity pattern on weekend",
+   ylab="Miles per Gallon", xlab="Car Weight",
+   layout=c(1,2))
+
 ```
 
 
+We can see difference in the daily activity patterns for weekdays and the weekend. 
+In weekdays there are two peaks of activity (morning and evening). At the weekend
+activity distributed more smoothly.
