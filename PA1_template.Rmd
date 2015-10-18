@@ -8,9 +8,25 @@ output:
 
 ## Loading and preprocessing the data
 
+Let's simple read file, convert data into data format  and see result.
+
+```{r}
+DateType  <- "%Y-%m-%d"
+FitbitData <- read.csv(unz("activity.zip", "activity.csv"), header = T)
+FitbitData$date <- as.Date(FitbitData$date, DateType)
+#FitbitData$date <- as.factor(FitbitData$date)
+summary(FitbitData)
+```
 
 
 ## What is mean total number of steps taken per day?
+```{r}
+a <- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)
+sum(a$x, na.rm = T)
+a <- as.data.frame(a)
+summary(a)
+hist(a$x)
+
 
 
 
