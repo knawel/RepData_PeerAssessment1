@@ -50,7 +50,7 @@ print(paste0("Median: ", as.character(median(a$x, na.rm = T))))
 ```
 ## [1] "Median: 10765"
 ```
-And plot histogram:
+And there is histogram:
 
 
 ```r
@@ -61,10 +61,19 @@ hist(a$x, main = "Total number of steps per day", xlab = "Steps per day", col = 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
 
 
-
 ## What is the average daily activity pattern?
 
+Add the plot with averaged steps per interval:
 
+
+```r
+b <- aggregate(FitbitData$steps, by=list(Category=FitbitData$interval), FUN=mean, na.rm=TRUE)
+plot(b, type="l", col="cadetblue4", lwd=2.5, 
+     main="Average activity pattern", 
+     xlab="Interval", ylab="Average number of steps")
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 ## Imputing missing values
 
