@@ -20,13 +20,21 @@ summary(FitbitData)
 
 
 ## What is mean total number of steps taken per day?
+
+For this part I've calculated total numbers of steps for each day.
 ```{r}
 a <- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)
-sum(a$x, na.rm = T)
+```
+So, mean and median value are:
+```{r}
+print(paste0("Mean: ", as.character(sum(a$x, na.rm = T))))
+```
+
+An
 a <- as.data.frame(a)
 summary(a)
 hist(a$x)
-
+```
 
 
 

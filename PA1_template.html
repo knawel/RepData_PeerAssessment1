@@ -74,30 +74,21 @@ summary(FitbitData)</code></pre>
 </div>
 <div id="what-is-mean-total-number-of-steps-taken-per-day" class="section level2">
 <h2>What is mean total number of steps taken per day?</h2>
-<pre class="r"><code>a &lt;- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)
-sum(a$x, na.rm = T)</code></pre>
-<pre><code>## [1] 570608</code></pre>
-<pre class="r"><code>a &lt;- as.data.frame(a)
-summary(a)</code></pre>
-<pre><code>##     Category                x        
-##  Min.   :2012-10-01   Min.   :   41  
-##  1st Qu.:2012-10-16   1st Qu.: 8841  
-##  Median :2012-10-31   Median :10765  
-##  Mean   :2012-10-31   Mean   :10766  
-##  3rd Qu.:2012-11-15   3rd Qu.:13294  
-##  Max.   :2012-11-30   Max.   :21194  
-##                       NA's   :8</code></pre>
-<pre class="r"><code>hist(a$x)</code></pre>
-<p><img src="data:image/png;base64,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" /></p>
-<pre class="r"><code>## What is the average daily activity pattern?
-
-
-
-## Imputing missing values
-
-
-
-## Are there differences in activity patterns between weekdays and weekends?</code></pre>
+<p>For this part I’ve calculated total numbers of steps for each day.</p>
+<pre class="r"><code>a &lt;- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)</code></pre>
+<p>So, mean and median value are:</p>
+<pre class="r"><code>print(paste0(&quot;Mean: &quot;, as.character(sum(a$x, na.rm = T))))</code></pre>
+<pre><code>## [1] &quot;Mean: 570608&quot;</code></pre>
+<p>An a &lt;- as.data.frame(a) summary(a) hist(a$x) ```</p>
+</div>
+<div id="what-is-the-average-daily-activity-pattern" class="section level2">
+<h2>What is the average daily activity pattern?</h2>
+</div>
+<div id="imputing-missing-values" class="section level2">
+<h2>Imputing missing values</h2>
+</div>
+<div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
+<h2>Are there differences in activity patterns between weekdays and weekends?</h2>
 </div>
 
 

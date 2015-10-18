@@ -28,38 +28,29 @@ summary(FitbitData)
 
 ## What is mean total number of steps taken per day?
 
+For this part I've calculated total numbers of steps for each day.
+
 ```r
 a <- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)
-sum(a$x, na.rm = T)
 ```
-
-```
-## [1] 570608
-```
+So, mean and median value are:
 
 ```r
+print(paste0("Mean: ", as.character(sum(a$x, na.rm = T))))
+```
+
+```
+## [1] "Mean: 570608"
+```
+
+An
 a <- as.data.frame(a)
 summary(a)
-```
-
-```
-##     Category                x        
-##  Min.   :2012-10-01   Min.   :   41  
-##  1st Qu.:2012-10-16   1st Qu.: 8841  
-##  Median :2012-10-31   Median :10765  
-##  Mean   :2012-10-31   Mean   :10766  
-##  3rd Qu.:2012-11-15   3rd Qu.:13294  
-##  Max.   :2012-11-30   Max.   :21194  
-##                       NA's   :8
-```
-
-```r
 hist(a$x)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
 
-```r
+
 ## What is the average daily activity pattern?
 
 
@@ -69,4 +60,3 @@ hist(a$x)
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```
