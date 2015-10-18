@@ -76,14 +76,13 @@ summary(FitbitData)</code></pre>
 <h2>What is mean total number of steps taken per day?</h2>
 <p>For this part I’ve calculated total numbers of steps for each day.</p>
 <pre class="r"><code>a &lt;- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)</code></pre>
-<p>So, mean and median value are:</p>
+<p>So, mean and median values are:</p>
 <pre class="r"><code>print(paste0(&quot;Mean: &quot;, as.character(mean(a$x, na.rm = T))))</code></pre>
 <pre><code>## [1] &quot;Mean: 10766.1886792453&quot;</code></pre>
 <pre class="r"><code>print(paste0(&quot;Median: &quot;, as.character(median(a$x, na.rm = T))))</code></pre>
 <pre><code>## [1] &quot;Median: 10765&quot;</code></pre>
 <p>And there is histogram:</p>
-<pre class="r"><code>#summary(a)
-hist(a$x, main = &quot;Total number of steps per day&quot;, xlab = &quot;Steps per day&quot;, col = &quot;cadetblue2&quot;)</code></pre>
+<pre class="r"><code>hist(a$x, main = &quot;Total number of steps per day&quot;, xlab = &quot;Steps per day&quot;, col = &quot;cadetblue2&quot;)</code></pre>
 <p><img src="data:image/png;base64,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" /></p>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
@@ -97,9 +96,841 @@ plot(b, type=&quot;l&quot;, col=&quot;cadetblue4&quot;, lwd=2.5,
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
+<p>Let’s fill NA values.</p>
+<p>The total number of missing values in the dataset</p>
+<pre class="r"><code>sum(is.na(FitbitData$steps))</code></pre>
+<pre><code>## [1] 2304</code></pre>
+<p><code>NA</code> are located only in <code>steps</code> column. I replace NA by averages steps per 5-min interval. And save this new dataset as <code>FitbitData_woNA</code>.</p>
+<pre class="r"><code>FitbitData_woNA &lt;- FitbitData
+NA_intervals &lt;- FitbitData_woNA$interval[is.na(FitbitData_woNA$steps)]
+NA_steps &lt;- numeric()
+for (i in NA_intervals){
+    NA_steps &lt;- c(NA_steps, b$x[b$Category == i])
+}
+FitbitData_woNA$steps[is.na(FitbitData_woNA$steps)] &lt;- NA_steps
+head(FitbitData_woNA)</code></pre>
+<pre><code>##       steps       date interval
+## 1 1.7169811 2012-10-01        0
+## 2 0.3396226 2012-10-01        5
+## 3 0.1320755 2012-10-01       10
+## 4 0.1509434 2012-10-01       15
+## 5 0.0754717 2012-10-01       20
+## 6 2.0943396 2012-10-01       25</code></pre>
+<pre class="r"><code>head(FitbitData)</code></pre>
+<pre><code>##   steps       date interval
+## 1    NA 2012-10-01        0
+## 2    NA 2012-10-01        5
+## 3    NA 2012-10-01       10
+## 4    NA 2012-10-01       15
+## 5    NA 2012-10-01       20
+## 6    NA 2012-10-01       25</code></pre>
+<p>This is a histogram of the total number of steps per each day for this new dataset:</p>
+<pre class="r"><code>c &lt;- aggregate(FitbitData_woNA$steps, by=list(Category=FitbitData_woNA$date), FUN=sum)
+hist(c$x, main = &quot;Total number of steps per day&quot;, xlab = &quot;Steps per day&quot;, col = &quot;cadetblue2&quot;)</code></pre>
+<p><img src="data:image/png;base64,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" /></p>
+<p>Mean and median values for this new dataset are:</p>
+<pre class="r"><code>print(paste0(&quot;Mean for old dataset: &quot;, as.character(mean(a$x, na.rm = T))))</code></pre>
+<pre><code>## [1] &quot;Mean for old dataset: 10766.1886792453&quot;</code></pre>
+<pre class="r"><code>print(paste0(&quot;Mean for new dataset: &quot;, as.character(mean(c$x))))</code></pre>
+<pre><code>## [1] &quot;Mean for new dataset: 10766.1886792453&quot;</code></pre>
+<pre class="r"><code>print(paste0(&quot;Median for old dataset: &quot;, as.character(median(a$x, na.rm = T))))</code></pre>
+<pre><code>## [1] &quot;Median for old dataset: 10765&quot;</code></pre>
+<pre class="r"><code>print(paste0(&quot;Median  for new dataset: &quot;, as.character(median(c$x))))</code></pre>
+<pre><code>## [1] &quot;Median  for new dataset: 10766.1886792453&quot;</code></pre>
+<p>Mean and median value didn’t change. It can be due to <code>na</code> values present only for one day (1st Oct). And steps for <em>every</em> intervals of this day is <code>na</code>. And when I replaced these values by mean values nothing changes (at least for calculation of mean and median).</p>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
+<p>At the first set up locale</p>
+<pre class="r"><code>Sys.setlocale(&quot;LC_TIME&quot;, &quot;English&quot;)</code></pre>
+<pre><code>## [1] &quot;English_United States.1252&quot;</code></pre>
+<p>And devide dataset into two:</p>
+<pre class="r"><code>wd &lt;- c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;)
+
+FitbitData_woNA$day &lt;- weekdays(FitbitData_woNA$date)
+head(FitbitData_woNA$day )</code></pre>
+<pre><code>## [1] &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot; &quot;Monday&quot;</code></pre>
+<pre class="r"><code>FitbitData_weekday&lt;-FitbitData_woNA[FitbitData_woNA$day %in% wd, ]
+FitbitData_weekend&lt;-FitbitData_woNA[!(FitbitData_woNA$day %in% wd), ]
+
+
+print(FitbitData_weekend$day)</code></pre>
+<pre><code>##    [1] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##    [7] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [13] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [19] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [25] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [31] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [37] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [43] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [49] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [55] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [61] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [67] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [73] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [79] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [85] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [91] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##   [97] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [103] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [109] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [115] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [121] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [127] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [133] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [139] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [145] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [151] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [157] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [163] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [169] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [175] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [181] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [187] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [193] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [199] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [205] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [211] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [217] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [223] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [229] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [235] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [241] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [247] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [253] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [259] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [265] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [271] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [277] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [283] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [289] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [295] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [301] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [307] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [313] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [319] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [325] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [331] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [337] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [343] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [349] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [355] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [361] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [367] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [373] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [379] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [385] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [391] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [397] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [403] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [409] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [415] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [421] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [427] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [433] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [439] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [445] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [451] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [457] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [463] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [469] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [475] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [481] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [487] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [493] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [499] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [505] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [511] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [517] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [523] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [529] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [535] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [541] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [547] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [553] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [559] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [565] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [571] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [577] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [583] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [589] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [595] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [601] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [607] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [613] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [619] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [625] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [631] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [637] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [643] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [649] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [655] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [661] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [667] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [673] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [679] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [685] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [691] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [697] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [703] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [709] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [715] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [721] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [727] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [733] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [739] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [745] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [751] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [757] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [763] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [769] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [775] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [781] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [787] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [793] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [799] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [805] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [811] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [817] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [823] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [829] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [835] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [841] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [847] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [853] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [859] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+##  [865] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [871] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [877] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [883] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [889] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [895] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [901] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [907] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [913] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [919] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [925] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [931] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [937] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [943] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [949] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [955] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [961] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [967] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [973] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [979] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [985] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [991] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+##  [997] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1003] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1009] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1015] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1021] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1027] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1033] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1039] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1045] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1051] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1057] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1063] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1069] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1075] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1081] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1087] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1093] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1099] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1105] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1111] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1117] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1123] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1129] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1135] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1141] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1147] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1153] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1159] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1165] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1171] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1177] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1183] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1189] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1195] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1201] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1207] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1213] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1219] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1225] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1231] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1237] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1243] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1249] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1255] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1261] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1267] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1273] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1279] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1285] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1291] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1297] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1303] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1309] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1315] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1321] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1327] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1333] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1339] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1345] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1351] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1357] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1363] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1369] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1375] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1381] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1387] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1393] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1399] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1405] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1411] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1417] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1423] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1429] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1435] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1441] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1447] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1453] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1459] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1465] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1471] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1477] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1483] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1489] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1495] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1501] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1507] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1513] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1519] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1525] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1531] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1537] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1543] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1549] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1555] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1561] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1567] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1573] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1579] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1585] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1591] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1597] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1603] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1609] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1615] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1621] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1627] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1633] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1639] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1645] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1651] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1657] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1663] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1669] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1675] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1681] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1687] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1693] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1699] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1705] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1711] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1717] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1723] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [1729] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1735] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1741] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1747] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1753] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1759] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1765] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1771] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1777] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1783] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1789] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1795] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1801] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1807] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1813] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1819] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1825] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1831] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1837] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1843] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1849] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1855] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1861] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1867] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1873] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1879] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1885] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1891] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1897] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1903] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1909] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1915] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1921] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1927] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1933] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1939] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1945] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1951] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1957] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1963] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1969] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1975] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1981] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1987] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1993] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [1999] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2005] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2011] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2017] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2023] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2029] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2035] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2041] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2047] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2053] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2059] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2065] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2071] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2077] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2083] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2089] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2095] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2101] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2107] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2113] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2119] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2125] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2131] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2137] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2143] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2149] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2155] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2161] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2167] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2173] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2179] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2185] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2191] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2197] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2203] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2209] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2215] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2221] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2227] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2233] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2239] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2245] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2251] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2257] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2263] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2269] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2275] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2281] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2287] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2293] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2299] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2305] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2311] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2317] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2323] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2329] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2335] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2341] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2347] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2353] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2359] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2365] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2371] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2377] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2383] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2389] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2395] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2401] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2407] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2413] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2419] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2425] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2431] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2437] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2443] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2449] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2455] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2461] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2467] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2473] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2479] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2485] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2491] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2497] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2503] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2509] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2515] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2521] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2527] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2533] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2539] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2545] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2551] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2557] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2563] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2569] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2575] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2581] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2587] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2593] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2599] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2605] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2611] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2617] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2623] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2629] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2635] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2641] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2647] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2653] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2659] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2665] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2671] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2677] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2683] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2689] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2695] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2701] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2707] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2713] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2719] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2725] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2731] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2737] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2743] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2749] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2755] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2761] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2767] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2773] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2779] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2785] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2791] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2797] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2803] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2809] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2815] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2821] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2827] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2833] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2839] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2845] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2851] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2857] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2863] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2869] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2875] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [2881] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2887] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2893] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2899] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2905] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2911] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2917] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2923] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2929] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2935] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2941] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2947] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2953] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2959] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2965] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2971] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2977] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2983] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2989] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [2995] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3001] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3007] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3013] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3019] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3025] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3031] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3037] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3043] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3049] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3055] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3061] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3067] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3073] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3079] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3085] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3091] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3097] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3103] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3109] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3115] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3121] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3127] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3133] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3139] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3145] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3151] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3157] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3163] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3169] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3175] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3181] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3187] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3193] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3199] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3205] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3211] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3217] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3223] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3229] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3235] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3241] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3247] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3253] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3259] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3265] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3271] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3277] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3283] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3289] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3295] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3301] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3307] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3313] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3319] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3325] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3331] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3337] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3343] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3349] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3355] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3361] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3367] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3373] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3379] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3385] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3391] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3397] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3403] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3409] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3415] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3421] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3427] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3433] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3439] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3445] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3451] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3457] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3463] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3469] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3475] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3481] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3487] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3493] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3499] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3505] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3511] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3517] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3523] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3529] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3535] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3541] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3547] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3553] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3559] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3565] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3571] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3577] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3583] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3589] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3595] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3601] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3607] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3613] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3619] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3625] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3631] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3637] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3643] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3649] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3655] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3661] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3667] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3673] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3679] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3685] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3691] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3697] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3703] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3709] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3715] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3721] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3727] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3733] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3739] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [3745] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3751] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3757] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3763] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3769] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3775] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3781] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3787] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3793] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3799] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3805] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3811] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3817] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3823] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3829] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3835] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3841] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3847] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3853] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3859] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3865] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3871] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3877] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3883] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3889] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3895] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3901] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3907] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3913] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3919] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3925] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3931] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3937] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3943] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3949] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3955] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3961] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3967] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3973] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3979] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3985] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3991] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [3997] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4003] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4009] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4015] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4021] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4027] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4033] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4039] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4045] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4051] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4057] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4063] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4069] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4075] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4081] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4087] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4093] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4099] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4105] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4111] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4117] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4123] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4129] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4135] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4141] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4147] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4153] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4159] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4165] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4171] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4177] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4183] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4189] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4195] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4201] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4207] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4213] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4219] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4225] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4231] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4237] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4243] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4249] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4255] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4261] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4267] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4273] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4279] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4285] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4291] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4297] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4303] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4309] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4315] &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot; &quot;Saturday&quot;
+## [4321] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4327] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4333] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4339] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4345] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4351] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4357] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4363] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4369] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4375] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4381] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4387] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4393] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4399] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4405] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4411] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4417] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4423] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4429] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4435] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4441] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4447] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4453] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4459] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4465] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4471] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4477] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4483] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4489] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4495] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4501] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4507] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4513] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4519] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4525] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4531] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4537] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4543] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4549] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4555] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4561] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4567] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4573] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4579] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4585] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4591] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4597] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;  
+## [4603] &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;   &quot;Sunday&quot;</code></pre>
+<pre class="r"><code># activity_weekday &lt;- transform(activity_weekday, interval = factor(interval))
+# activity_weekday&lt;-group_by(activity_weekday,interval)
+# mean_steps_interval_weekday &lt;- summarise(activity_weekday, steps = mean(steps,na.rm=TRUE))
+# 
+# activity_weekend&lt;-subset(activity_noNAs,date_day==1 | date_day==7)
+# activity_weekend &lt;- transform(activity_weekend, interval = factor(interval))
+# activity_weekend&lt;-group_by(activity_weekend,interval)
+# mean_steps_interval_weekend &lt;- summarise(activity_weekend, steps = mean(steps,na.rm=TRUE))</code></pre>
 </div>
 
 

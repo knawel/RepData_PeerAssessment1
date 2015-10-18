@@ -25,7 +25,7 @@ For this part I've calculated total numbers of steps for each day.
 ```{r}
 a <- aggregate(FitbitData$steps, by=list(Category=FitbitData$date), FUN=sum)
 ```
-So, mean and median value are:
+So, mean and median values are:
 ```{r}
 print(paste0("Mean: ", as.character(mean(a$x, na.rm = T))))
 print(paste0("Median: ", as.character(median(a$x, na.rm = T))))
@@ -33,7 +33,6 @@ print(paste0("Median: ", as.character(median(a$x, na.rm = T))))
 And there is histogram:
 
 ```{r}
-#summary(a)
 hist(a$x, main = "Total number of steps per day", xlab = "Steps per day", col = "cadetblue2")
 ```
 
@@ -50,7 +49,79 @@ plot(b, type="l", col="cadetblue4", lwd=2.5,
 ```
 
 ## Imputing missing values
+Let's fill NA values.
+
+The total number of missing values in the dataset
+```{r}
+sum(is.na(FitbitData$steps))
+```
+
+```NA``` are located only in ```steps``` column. I replace NA by averages steps per 5-min interval. And save this new dataset as ```FitbitData_woNA```.
 
 
+```{r}
+FitbitData_woNA <- FitbitData
+NA_intervals <- FitbitData_woNA$interval[is.na(FitbitData_woNA$steps)]
+NA_steps <- numeric()
+for (i in NA_intervals){
+    NA_steps <- c(NA_steps, b$x[b$Category == i])
+}
+FitbitData_woNA$steps[is.na(FitbitData_woNA$steps)] <- NA_steps
+head(FitbitData_woNA)
+head(FitbitData)
+
+```
+This is a histogram of the total number of steps per each day for this new dataset:
+
+```{r}
+c <- aggregate(FitbitData_woNA$steps, by=list(Category=FitbitData_woNA$date), FUN=sum)
+hist(c$x, main = "Total number of steps per day", xlab = "Steps per day", col = "cadetblue2")
+```
+
+Mean and median values for this new dataset are:
+```{r}
+print(paste0("Mean for old dataset: ", as.character(mean(a$x, na.rm = T))))
+print(paste0("Mean for new dataset: ", as.character(mean(c$x))))
+print(paste0("Median for old dataset: ", as.character(median(a$x, na.rm = T))))
+print(paste0("Median  for new dataset: ", as.character(median(c$x))))
+```
+
+Mean and median value didn't change. It can be due to ```na``` values present only for one day (1st Oct). And steps for *every* intervals of this day is ```na```. And when I replaced these values by mean values nothing changes (at least for calculation of mean and median).
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+At the first set up locale
+```{r}
+Sys.setlocale("LC_TIME", "English")
+```
+
+And devide dataset into two:
+
+```{r}
+wd <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+
+FitbitData_woNA$day <- weekdays(FitbitData_woNA$date)
+head(FitbitData_woNA$day )
+
+FitbitData_weekday<-FitbitData_woNA[FitbitData_woNA$day %in% wd, ]
+FitbitData_weekend<-FitbitData_woNA[!(FitbitData_woNA$day %in% wd), ]
+
+b_we <- aggregate(FitbitData_weekend$steps, by=list(Category=FitbitData_weekend$interval), FUN=mean)
+b_wd <- aggregate(FitbitData_weekend$steps, by=list(Category=FitbitData_weekend$interval), FUN=mean)
+
+
+```
+
+And plet the results:
+```{r}
+par(mfrow = c(2, 1))
+
+b <- aggregate(FitbitData$steps, by=list(Category=FitbitData$interval), FUN=mean, na.rm=TRUE)
+plot(b, type="l", col="cadetblue4", lwd=2.5, 
+     main="Average activity pattern", 
+     xlab="Interval", ylab="Average number of steps")
+
+
+```
+
+
